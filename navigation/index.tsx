@@ -56,14 +56,6 @@ function RootNavigator() {
         component={BottomTabNavigator}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="NotFound"
-        component={NotFoundScreen}
-        options={{ title: "Oops!" }}
-      />
-      <Stack.Group screenOptions={{ presentation: "modal" }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
-      </Stack.Group>
     </Stack.Navigator>
   );
 }
@@ -79,49 +71,49 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Homne"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}
     >
       <BottomTab.Screen
-        name="TabOne"
+        name="Home"
         component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
+        options={({ navigation }: RootTabScreenProps<"Home">) => ({
           title: "Home",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="home" size={24} color="black" />
+            <AntDesign name="home" size={24} color={color} />
           ),
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="ComingSoon"
         component={TabTwoScreen}
         options={{
           title: "Coming Soon",
           tabBarIcon: ({ color }) => (
-            <MaterialIcons name="video-library" size={24} color="black" />
+            <MaterialIcons name="video-library" size={24} color={color} />
           ),
         }}
       />
 
       <BottomTab.Screen
-        name="TabTwo"
+        name="Search"
         component={TabOneScreen}
         options={{
           title: "Search",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="search" size={24} color="black" />
+            <Ionicons name="search" size={24} color={color} />
           ),
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Downloads"
         component={TabOneScreen}
         options={{
           title: "Downloads",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="download" size={24} color="black" />
+            <AntDesign name="download" size={24} color={color} />
           ),
         }}
       />
