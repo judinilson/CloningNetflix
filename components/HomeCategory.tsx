@@ -27,6 +27,7 @@ const HomeScreen = (props: IHomesCategorory) => {
           />
         )}
         horizontal
+        showsHorizontalScrollIndicator={false}
       />
     </>
   );
