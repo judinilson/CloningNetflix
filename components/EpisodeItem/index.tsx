@@ -23,22 +23,20 @@ const EpisodeItem = (props: EpisodeItemProps) => {
   const { episode, onPress } = props;
 
   return (
-    <View style={{ marginVertical: 10 }}>
-      <Pressable style={{ margin: 10 }} onPress={() => onPress(episode)}>
-        <View style={styles.row}>
-          <Image style={styles.image} source={{ uri: episode.poster }} />
+    <Pressable style={{ margin: 10 }} onPress={() => onPress(episode)}>
+      <View style={styles.row}>
+        <Image style={styles.image} source={{ uri: episode.poster }} />
 
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>{episode.title}</Text>
-            <Text style={styles.duration}>{episode.duration}</Text>
-          </View>
-
-          <AntDesign name="download" size={24} color={"white"} />
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{episode.title}</Text>
+          <Text style={styles.duration}>{episode.duration}</Text>
         </View>
 
-        <Text style={styles.plot}>{episode.plot}</Text>
-      </Pressable>
-    </View>
+        <AntDesign name="download" size={24} color={"white"} />
+      </View>
+
+      <Text style={styles.plot}>{episode.plot}</Text>
+    </Pressable>
   );
 };
 
