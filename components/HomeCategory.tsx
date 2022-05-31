@@ -1,5 +1,7 @@
+import { useNavigation, useNavigationState } from "@react-navigation/native";
+import React from "react";
 import { StyleSheet } from "react-native";
-import { FlatList, Image } from "react-native";
+import { FlatList, Image, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, View } from "./Themed";
 
@@ -12,6 +14,10 @@ interface IHomesCategorory {
 }
 
 const HomeScreen = (props: IHomesCategorory) => {
+  const navigation = useNavigation();
+  const onMoviePress = (movie: any) => {
+    navigation.navigate("MovieDetailsScreen", { id: movie.id });
+  };
   const { category } = props;
   return (
     <>
@@ -19,12 +25,14 @@ const HomeScreen = (props: IHomesCategorory) => {
       <FlatList
         data={category.movies}
         renderItem={({ item }) => (
-          <Image
-            source={{
-              uri: item.poster,
-            }}
-            style={styles.image}
-          />
+          <Pressable onPress={onMoviePress(item)}>
+            <Image
+              source={{
+                uri: item.poster,
+              }}
+              style={styles.image}
+            />
+          </Pressable>
         )}
         horizontal
         showsHorizontalScrollIndicator={false}

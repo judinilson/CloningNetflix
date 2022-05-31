@@ -33,6 +33,12 @@ export type HomeParamList = {
   HomeScreen: undefined;
   MovieDetailsScreen: undefined;
 };
+export type BottomTabParamList = {
+  Home: undefined;
+  ComingSoon: undefined;
+  Search: undefined;
+  Downloads: undefined;
+};
 
 export type Episode = {
   id: string;

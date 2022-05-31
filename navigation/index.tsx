@@ -14,17 +14,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
 import { ColorSchemeName, Pressable } from "react-native";
 
-import Colors from "../constants/Colors";
-import useColorScheme from "../hooks/useColorScheme";
-import HomeScreen from "../screens/HomeScreen";
-import MoviesDetailsScreen from "../screens/MoviesDetailsScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
-import {
-  RootStackParamList,
-  RootTabParamList,
-  RootTabScreenProps,
-} from "../types";
+import { RootStackParamList } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
+import BottomTabNavigator from "./BottomTabNavigator";
 
 export default function Navigation({
   colorScheme,
@@ -56,67 +48,5 @@ function RootNavigator() {
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
-  );
-}
-
-/**
- * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
- * https://reactnavigation.org/docs/bottom-tab-navigator
- */
-const BottomTab = createBottomTabNavigator<RootTabParamList>();
-
-function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <BottomTab.Navigator
-      initialRouteName="Homne"
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
-      }}
-    >
-      <BottomTab.Screen
-        name="Home"
-        component={MoviesDetailsScreen}
-        options={({ navigation }: RootTabScreenProps<"Home">) => ({
-          title: "Home",
-          tabBarIcon: ({ color }) => (
-            <AntDesign name="home" size={24} color={color} />
-          ),
-          headerShown: false,
-        })}
-      />
-      <BottomTab.Screen
-        name="ComingSoon"
-        component={TabTwoScreen}
-        options={{
-          title: "Coming Soon",
-          tabBarIcon: ({ color }) => (
-            <MaterialIcons name="video-library" size={24} color={color} />
-          ),
-        }}
-      />
-
-      <BottomTab.Screen
-        name="Search"
-        component={HomeScreen}
-        options={{
-          title: "Search",
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="search" size={24} color={color} />
-          ),
-        }}
-      />
-      <BottomTab.Screen
-        name="Downloads"
-        component={HomeScreen}
-        options={{
-          title: "Downloads",
-          tabBarIcon: ({ color }) => (
-            <AntDesign name="download" size={24} color={color} />
-          ),
-        }}
-      />
-    </BottomTab.Navigator>
   );
 }
